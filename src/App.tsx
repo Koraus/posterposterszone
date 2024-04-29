@@ -1,4 +1,3 @@
-import './App.css'
 import { Header } from './components/Header'
 import { Footer } from './components/Footer'
 import "slick-carousel/slick/slick.css";
@@ -10,12 +9,14 @@ function App() {
 
   return (
     <>
-      <Header />
-      <h1>posterposterszone</h1>
-      <section>
-        <h2 css={{ textAlign: "center" }}>SLIDER </h2>
-        <SimpleSlider />
-      </section>
+      <div css={{maxWidth: "1171px", margin: "0 auto"}}>
+        <Header />
+        <h1>posterposterszone</h1>
+        <section>
+          <h2 css={{ textAlign: "center" }}>SLIDER </h2>
+          <SimpleSlider />
+        </section>
+      </div>
       <Footer />
     </>
   )

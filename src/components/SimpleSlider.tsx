@@ -26,7 +26,8 @@ export default function SimpleSlider() {
 `
 
   return (
-    <Slider {...settings}>
+
+    <Slider {...settings} >
       {Array.from({ length: 6 }).map((_, index) => {
         const color = `#${Math.floor(Math.random() * 16777215).toString(16)}`
         return <div key={index} css={[a, { backgroundColor: color }]}  >
@@ -35,7 +36,7 @@ export default function SimpleSlider() {
       }
       )
       }
-
     </Slider >
+
   );
 }

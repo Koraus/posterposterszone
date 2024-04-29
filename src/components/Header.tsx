@@ -1,6 +1,7 @@
 import logoUrl from '../assets/imgs/logo.svg';
 import likeUrl from '../assets/imgs/liked-ico.svg';
 import cartUrl from '../assets/imgs/cart-ico.svg';
+import { css } from '@emotion/react';
 
 
 const Nav = () => {
@@ -11,57 +12,76 @@ const Nav = () => {
     padding: 0,
     margin: 0,
   }
-  const linklCss = {
-    color: '#000',
-    textDecoration: 'none',
-    fontSize: '1.5rem',
-    fontWeight: 'bold',
-    paddingRight: '20px',
-    cursor: 'pointer',
-  }
+
+
+  const linklCss = css`
+    color: #000;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 400;
+    padding-right: 60px;
+    cursor: pointer;
+    &:hover {
+      filter: drop-shadow(0 0 1rem #000);
+    };
+    &::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: black;
+      transition: width .3s;
+    };
+    &:hover::after {
+      width: 100%;
+    }
+
+  `
 
   return (
     <nav css={{
       display: 'flex',
-      justifyContent: 'center',
       alignItems: 'center',
-      gap: '20px',
+      justifyContent: 'space-between',
     }}>
 
-      <ul css={ulCss}>
-        <li css={linklCss}>shop</li>
-        <li css={linklCss}>delivery</li>
-        <li css={linklCss}>about us</li>
+      <ul css={[ulCss, { flex: 1 }]}>
+        <li css={linklCss}>Shop</li>
+        <li css={linklCss}>Delivery</li>
+        <li css={linklCss}>About us</li>
       </ul>
 
       <img src={logoUrl} alt="logo" css={{
         width: '50px',
         height: '50px',
         display: 'block',
+        flex: 1,
       }} />
-      <div css={linklCss}>
-        search
+      <div css={{ flex: 1, display: "flex", justifyContent: "center", alignItems: 'center', }}>
+        <div css={linklCss}>
+          search
+        </div>
+        <div>
+          <img src={likeUrl} alt="" />
+        </div>
+        <div>
+          <img src={cartUrl} alt="" />
+        </div>
       </div>
-      <div>
-        <img src={likeUrl} alt="" />
-      </div>
-      <div>
-        <img src={cartUrl} alt="" />
-      </div>
-    </nav>
+    </nav >
   )
 };
 
 export const Header = () => {
   return (
-    <header>
+    <header
+      css={{
+        paddingTop: '20px',
+        paddingBottom: '20px',
+        borderBottom: '1px solid #D9D9D9',
+      }}
+    >
       <Nav />
-      <div style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}>
-      </div>
     </header>
   );
 }
