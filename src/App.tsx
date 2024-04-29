@@ -11,9 +11,7 @@ function App() {
     <>
       <div css={{maxWidth: "1171px", margin: "0 auto"}}>
         <Header />
-        <h1>posterposterszone</h1>
         <section>
-          <h2 css={{ textAlign: "center" }}>SLIDER </h2>
           <SimpleSlider />
         </section>
       </div>

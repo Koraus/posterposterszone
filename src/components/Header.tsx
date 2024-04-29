@@ -1,5 +1,4 @@
 import logoUrl from '../assets/imgs/logo.svg';
-import likeUrl from '../assets/imgs/liked-ico.svg';
 import cartUrl from '../assets/imgs/cart-ico.svg';
 import { css } from '@emotion/react';
 
@@ -12,7 +11,6 @@ const Nav = () => {
     padding: 0,
     margin: 0,
   }
-
 
   const linklCss = css`
     color: #000;
@@ -102,7 +100,7 @@ const Nav = () => {
             </div>
           </div>
 
-          <img src={cartUrl} alt="" />
+          <img src={cartUrl} alt="" css={{ maxHeight: "24px" }} />
         </div>
       </div>
     </nav >
@@ -116,6 +114,7 @@ export const Header = () => {
         paddingTop: '20px',
         paddingBottom: '20px',
         borderBottom: '1px solid #D9D9D9',
+        marginBottom: '20px',
       }}
     >
       <Nav />
