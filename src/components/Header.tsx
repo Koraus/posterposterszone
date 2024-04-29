@@ -19,7 +19,7 @@ const Nav = () => {
     text-decoration: none;
     font-size: 15px;
     font-weight: 400;
-    padding-right: 60px;
+    margin-right: 60px;
     cursor: pointer;
     &:hover {
       filter: drop-shadow(0 0 1rem #000);
@@ -61,10 +61,47 @@ const Nav = () => {
         <div css={linklCss}>
           search
         </div>
-        <div>
-          <img src={likeUrl} alt="" />
+        <div css={[linklCss, { position: "relative" }]}>
+          liked
+          <div css={{
+            width: '20px',
+            height: '20px',
+            borderRadius: '50%',
+            backgroundColor: 'gray',
+            color: 'white',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            fontSize: '12px',
+            marginLeft: '5px',
+            position: 'absolute',
+            bottom: '-10px',
+            right: '-20px',
+          }}>
+            0
+          </div>
         </div>
-        <div>
+        <div css={{ display: "flex", }}>
+          <div css={[linklCss, { marginRight: "10px", position: "relative" }]}> bag
+            <div css={{
+              width: '20px',
+              height: '20px',
+              borderRadius: '50%',
+              backgroundColor: 'gray',
+              color: 'white',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              fontSize: '12px',
+              marginLeft: '5px',
+              position: 'absolute',
+              bottom: '-10px',
+              right: '-50px',
+            }}>
+              0
+            </div>
+          </div>
+
           <img src={cartUrl} alt="" />
         </div>
       </div>
