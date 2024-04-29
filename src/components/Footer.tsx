@@ -7,8 +7,9 @@ export const Footer = () => {
             color: '#fff',
             padding: '20px',
             textAlign: 'center',
-            maxWidth: '1440px',
+            maxWidth: '1171px',
             minHeight: '200px',
+            margin: '0 auto',
         }}>
             F O O T E R
    

@@ -57,10 +57,10 @@ const Nav = () => {
       }} />
       <div css={{ flex: 1, display: "flex", justifyContent: "center", alignItems: 'center', }}>
         <div css={linklCss}>
-          search
+          Search
         </div>
         <div css={[linklCss, { position: "relative" }]}>
-          liked
+          Liked
           <div css={{
             width: '20px',
             height: '20px',
