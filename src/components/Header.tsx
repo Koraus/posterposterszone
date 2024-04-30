@@ -1,7 +1,8 @@
 import logoUrl from '../assets/imgs/logo.svg';
 import cartUrl from '../assets/imgs/cart-ico.svg';
 import { css } from '@emotion/react';
-
+import { NavLink } from 'react-router-dom';
+import { paths } from '../main';
 
 const Nav = () => {
 
@@ -17,7 +18,6 @@ const Nav = () => {
     text-decoration: none;
     font-size: 15px;
     font-weight: 400;
-    margin-right: 60px;
     cursor: pointer;
     &:hover {
       filter: drop-shadow(0 0 1rem #000);
@@ -33,8 +33,8 @@ const Nav = () => {
     &:hover::after {
       width: 100%;
     }
-
   `
+
 
   return (
     <nav css={{
@@ -43,10 +43,16 @@ const Nav = () => {
       justifyContent: 'space-between',
     }}>
 
-      <ul css={[ulCss, { flex: 1 }]}>
-        <li css={linklCss}>Shop</li>
-        <li css={linklCss}>Delivery</li>
-        <li css={linklCss}>About us</li>
+      <ul css={[ulCss, { flex: 1 },]}>
+        <li css={{ marginRight: "60px", }}>
+          <NavLink to={paths.home} css={linklCss}> Home</NavLink>
+        </li>
+        <li css={{ marginRight: "60px", }}>
+          <NavLink to={paths.delivery} css={linklCss}> Delivery</NavLink>
+        </li>
+        <li css={{ marginRight: "60px", }}>
+          <NavLink to={paths.about} css={linklCss}> About us</NavLink>
+        </li>
       </ul>
 
       <img src={logoUrl} alt="logo" css={{
@@ -56,11 +62,11 @@ const Nav = () => {
         flex: 1,
       }} />
       <div css={{ flex: 1, display: "flex", justifyContent: "center", alignItems: 'center', }}>
-        <div css={linklCss}>
-          Search
+        <div css={[linklCss, { marginRight: "60px" }]} >
+          <NavLink to={paths.search} css={linklCss}> Search</NavLink>
         </div>
-        <div css={[linklCss, { position: "relative" }]}>
-          Liked
+        <div css={[linklCss, { position: "relative", marginRight: "60px" }]}>
+          <NavLink to={paths.liked} css={linklCss}> Liked</NavLink>
           <div css={{
             width: '20px',
             height: '20px',
@@ -80,7 +86,9 @@ const Nav = () => {
           </div>
         </div>
         <div css={{ display: "flex", }}>
-          <div css={[linklCss, { marginRight: "10px", position: "relative" }]}> bag
+
+          <div css={[linklCss, { marginRight: "10px", position: "relative" }]}>
+            <NavLink to={paths.cart} css={linklCss}> Cart</NavLink>
             <div css={{
               width: '20px',
               height: '20px',

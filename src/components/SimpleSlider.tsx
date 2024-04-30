@@ -45,7 +45,7 @@ export default function SimpleSlider() {
 
             }}>
               <h2>Text </h2>
-              <p>subtitle</p>
+              <p>subtitle subtitle subtitle</p>
               <button> ++++ </button>
             </div>
           </div>
