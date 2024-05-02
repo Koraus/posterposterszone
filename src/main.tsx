@@ -58,8 +58,6 @@ const router = createHashRouter([
 
 ]);
 
-console.log(router)
-
 ReactDOM.createRoot(root!).render(
   <React.StrictMode>
     <RecoilRoot>

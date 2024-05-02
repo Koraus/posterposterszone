@@ -3,8 +3,12 @@ import cartUrl from '../assets/imgs/cart-ico.svg';
 import { css } from '@emotion/react';
 import { NavLink } from 'react-router-dom';
 import { paths } from '../main';
+import { useRecoilValue } from 'recoil';
+import { cartRecoil } from '../cartRecoil';
 
 const Nav = () => {
+
+  const cart = useRecoilValue(cartRecoil);
 
   const ulCss = {
     display: 'flex',
@@ -104,7 +108,7 @@ const Nav = () => {
               bottom: '-10px',
               right: '-50px',
             }}>
-              0
+             {cart.length}
             </div>
           </div>
 

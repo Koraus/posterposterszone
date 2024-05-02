@@ -1,52 +1,79 @@
-import { useEffect, useState } from "react"
-import { Cart } from "../Layout"
+import { useRecoilState } from "recoil"
+import { cartRecoil } from "../cartRecoil"
+import { ProductData } from "../data"
 
-export const ProductCard = ({ id }: { id: number }) => {
 
-    const [quantity, setQuantity] = useState(
-        JSON.parse(localStorage.getItem("cart") as string).products.find((product: { id: number }) => product.id === id)?.quantity || 0
-    )
+export const ProductCard = ({ productData }: { productData: ProductData }) => {
 
-    useEffect(() => {
-        const cart: Cart = JSON.parse(localStorage.getItem("cart") as string)
-        const productIndex = cart.products.findIndex((product) => product.id === id)
-        if (productIndex === -1) {
-            cart.products.push({
-                id,
-                quantity,
-                addedAt: Date.now()
-            })
+    const [cart, setCart] = useRecoilState(cartRecoil)
+
+    const increaseNumber = () => {
+        if (cart.filter((item) => item.id === productData.id).length > 0) {
+            setCart(
+                cart.map((item) => {
+                    if (item.id === productData.id) {
+                        return {
+                            ...item,
+                            quantity: item.quantity + 1
+                        }
+                    } else {
+                        return item
+                    }
+                })
+            )
         } else {
-            cart.products[productIndex].quantity = quantity
-        }
-        localStorage.setItem("cart", JSON.stringify(cart))
-    }, [quantity] )
-    return (
-        <div
-            css={
+            setCart([
+                ...cart,
                 {
-                    border: '1px solid black',
-                    padding: '20px',
-                    margin: '20px',
-                    width: '30%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-
+                    id: productData.id,
+                    quantity: 1,
+                    addedAt: Date.now()
                 }
-            }>
-            <h1>ProductCard</h1>
-            <img src="https://via.placeholder.com/150" alt="product" />
-            <p>Product {id}</p>
-            <p>Price: $10</p>
-            <p>Quantity: {quantity || 0}</p>
-            <button
-                onClick={() => {
-                    setQuantity(quantity + 1)
-                }}
-            >Add to cart</button>
+            ])
+        }
+    }
+    const reduceNumber = () => {
+        if (cart.filter((item) => item.id === productData.id).length > 0) {
 
+            if (cart.find((item) => item.id === productData.id)?.quantity === 1) {
+                setCart(
+                    cart.filter(
+                        (item) => item.id !== productData.id)
+                )
+            } else {
+                setCart(
+                    cart.map((item) => {
+                        if (item.id === productData.id) {
+                            return {
+                                ...item,
+                                quantity: item.quantity - 1
+                            }
+                        } else {
+                            return item
+                        }
+                    })
+                )
+            }
+        }
+    }
+    return (
+        <div css={{ padding: "10px" }}>
+            <img src={productData.imgUrl} alt={productData.title} css={{
+                width: '200px',
+                height: '200px'
+            }} />
+            <h2>{productData.title}</h2>
+            <p>{productData.description}</p>
+            <p>{productData.price}</p>
+            <p> quantity: {
+                cart.find((item) => item.id === productData.id)?.quantity || 0
+            } </p>
+            <button onClick={() => increaseNumber()} >
+                Add to cart
+            </button>
+            <button onClick={() => reduceNumber()}>
+                remove from cart
+            </button>
         </div>
     )
 }

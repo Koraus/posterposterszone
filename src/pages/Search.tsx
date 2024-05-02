@@ -1,6 +1,8 @@
 import { ProductCard } from "../components/ProductCard"
+import { productsData } from "../data"
 
 export const Search = () => {
+
     return (
         <div >
             <form>
@@ -13,11 +15,23 @@ export const Search = () => {
                         }
                     }>Search</button>
             </form>
-            {Array.from
-                ({ length: 10 }).map((_, index) => {
-                    return <ProductCard key={index} id={index} />
-                })
-            }
+            <div css={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                justifyContent: 'center'
+
+            }}>
+                {
+                    productsData.map(
+                        (productData) => {
+                            return (
+                                <ProductCard key={productData.id} productData={productData} />
+                            )
+                        }
+                    )
+                }
+            </div>
+
         </div >
     )
 }
