@@ -9,6 +9,7 @@ import { Home } from './pages/Home';
 import { Search } from './pages/Search';
 import { Cart } from './pages/Cart';
 import { Liked } from './pages/Liked';
+import { RecoilRoot } from 'recoil';
 
 
 const root = document.getElementById('root') as HTMLElement;
@@ -26,6 +27,7 @@ const router = createHashRouter([
   {
     path: paths.home,
     element: <Layout />,
+    errorElement: <div>404</div>,
     children: [
       {
         index: true,
@@ -52,14 +54,16 @@ const router = createHashRouter([
         element: <Cart />
       }
     ]
+  },
 
-  }
 ]);
 
 console.log(router)
 
 ReactDOM.createRoot(root!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <RecoilRoot>
+      <RouterProvider router={router} />
+    </RecoilRoot>
   </React.StrictMode>,
 )

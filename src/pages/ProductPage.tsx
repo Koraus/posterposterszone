@@ -1,4 +1,7 @@
+
+
 export const Product = () => {
+
     return (
         <div>
             <section>
@@ -18,6 +21,7 @@ export const Product = () => {
                                 <h2>Product</h2>
                                 <img src="https://via.placeholder.com/150" alt="" />
                                 <p>Content</p>
+                               
                             </div>
 
                         </div>
