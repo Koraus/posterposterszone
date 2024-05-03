@@ -42,6 +42,9 @@ export const Search = () => {
                         productData && <ProductCard key={id} productData={productData} />
                     )
                 })}
+                {
+                    fillterProducts.length === 0 && <h3>No products found</h3>
+                }
             </div>
         </div >
     )

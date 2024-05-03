@@ -15,9 +15,9 @@ export const Cart = () => {
                     cart.map((item) => {
                         const productData = productsData.find((product) => product.id === item.id);
                         return (
-                             productData && <ProductCard key={item.id} productData={productData} />
-                    )
-                })
+                            productData && <ProductCard key={item.id} productData={productData} />
+                        )
+                    })
                 }
             </div>
         </div>
