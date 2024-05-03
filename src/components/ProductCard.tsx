@@ -1,11 +1,13 @@
 import { useRecoilState } from "recoil"
 import { cartRecoil } from "../cartRecoil"
 import { ProductData } from "../data"
+import { favoritesRecoil } from "../favoriteRecoil";
 
 
 export const ProductCard = ({ productData }: { productData: ProductData }) => {
 
-    const [cart, setCart] = useRecoilState(cartRecoil)
+    const [cart, setCart] = useRecoilState(cartRecoil);
+    const [favorites, setFavorites] = useRecoilState(favoritesRecoil);
 
     const increaseNumber = () => {
         if (cart.filter((item) => item.id === productData.id).length > 0) {
@@ -56,6 +58,19 @@ export const ProductCard = ({ productData }: { productData: ProductData }) => {
             }
         }
     }
+    const switchFavorites = () => {
+        console.log(favorites)
+        if (favorites.some((item) => item === productData.id)) {
+            setFavorites(
+                favorites.filter((item) => item !== productData.id)
+            )
+        } else {
+            setFavorites([
+                ...favorites,
+                productData.id
+            ])
+        }
+    }
     return (
         <div css={{ padding: "10px" }}>
             <img src={productData.imgUrl} alt={productData.title} css={{
@@ -73,6 +88,9 @@ export const ProductCard = ({ productData }: { productData: ProductData }) => {
             </button>
             <button onClick={() => reduceNumber()}>
                 remove from cart
+            </button>
+            <button onClick={() => switchFavorites()}>
+               {favorites.some((item) => item === productData.id) ? 'Remove from favorites' : 'Add to favorites'}
             </button>
         </div>
     )
