@@ -6,9 +6,14 @@ import { Footer } from "./components/Footer"
 export const Layout = () => {
 
     return (
-        <div css={{ maxWidth: "1171px", margin: "0 auto" }}>
+        <div css={{
+            maxWidth: "1171px", margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            minHeight: "100vh",
+        }}>
             <Header />
-            <main>
+            <main css={{ flex: "1", }}>
                 <Outlet />
             </main>
             <Footer />

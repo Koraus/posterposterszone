@@ -19,6 +19,13 @@ html {
   box-sizing: border-box;
 }
 
+body {
+  min-height: 100%;
+  padding: 0;
+  margin: 0;
+  padding: 0 calc(20px - (100vw - 100%)) 0 0;
+}
+
 *,
 *:before,
 *:after {

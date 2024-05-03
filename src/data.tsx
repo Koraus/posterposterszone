@@ -9,7 +9,7 @@ import id7Url from './assets/posters-img/id7.jpeg';
 
 
 export type ProductData = {
-    id: number;
+    id: number ;
     title: string;
     description: string;
     type: "poster" | "photo" | "canvas";

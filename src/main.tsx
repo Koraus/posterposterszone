@@ -10,6 +10,7 @@ import { Search } from './pages/Search';
 import { Cart } from './pages/Cart';
 import { Liked } from './pages/Liked';
 import { RecoilRoot } from 'recoil';
+import { Product } from './pages/Product';
 
 
 const root = document.getElementById('root') as HTMLElement;
@@ -20,7 +21,8 @@ export const paths = {
   about: "/about",
   search: "/search",
   cart: "/cart",
-  liked: "/liked"
+  liked: "/liked",
+  product: "/product/:id",
 }
 
 const router = createHashRouter([
@@ -52,7 +54,12 @@ const router = createHashRouter([
       {
         path: paths.cart,
         element: <Cart />
+      },
+      {
+        path: paths.product,
+        element: <Product />
       }
+
     ]
   },
 

@@ -9,6 +9,11 @@ export const Liked = () => {
     return (
         <div>
             <h1>Favorites</h1>
+            {
+                favorites.length === 0 && <div>  <p>Your favourite list is currently empty</p>
+
+                    <p>Add all your favourites to this list for saving and sharing</p> </div>
+            }
             {favorites.map((id) => {
                 const productData = productsData.find((product) => product.id === id);
                 return (
