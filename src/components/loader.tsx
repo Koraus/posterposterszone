@@ -1,6 +1,6 @@
 import { CSSTransition } from 'react-transition-group';
 import { css } from '@emotion/react';
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 export const Loader = () => {
     const nodeRef = useRef(null);
