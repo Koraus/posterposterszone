@@ -5,10 +5,12 @@ import { NavLink } from 'react-router-dom';
 import { paths } from '../main';
 import { useRecoilValue } from 'recoil';
 import { cartRecoil } from '../cartRecoil';
+import { favoritesRecoil } from '../favoriteRecoil';
 
 const Nav = () => {
 
   const cart = useRecoilValue(cartRecoil);
+  const favorites = useRecoilValue(favoritesRecoil);
 
   const ulCss = {
     display: 'flex',
@@ -86,7 +88,7 @@ const Nav = () => {
             bottom: '-10px',
             right: '-20px',
           }}>
-            0
+            {favorites.length || 0}
           </div>
         </div>
         <div css={{ display: "flex", }}>
@@ -108,7 +110,7 @@ const Nav = () => {
               bottom: '-10px',
               right: '-50px',
             }}>
-             {cart.length}
+              {cart.length || 0}
             </div>
           </div>
 
