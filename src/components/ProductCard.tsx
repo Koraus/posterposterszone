@@ -58,6 +58,11 @@ export const ProductCard = ({ productData }: { productData: ProductData }) => {
             }
         }
     }
+    const removeProduct = () => {
+        setCart(
+            cart.filter((item) => item.id !== productData.id)
+        )
+    }
     const switchFavorites = () => {
         console.log(favorites)
         if (favorites.some((item) => item === productData.id)) {
@@ -72,7 +77,7 @@ export const ProductCard = ({ productData }: { productData: ProductData }) => {
         }
     }
     return (
-        <div css={{ padding: "10px" }}>
+        <div css={{ padding: "10px", maxWidth: "30%" }}>
             <img src={productData.imgUrl} alt={productData.title} css={{
                 width: '200px',
                 height: '200px'
@@ -84,13 +89,16 @@ export const ProductCard = ({ productData }: { productData: ProductData }) => {
                 cart.find((item) => item.id === productData.id)?.quantity || 0
             } </p>
             <button onClick={() => increaseNumber()} >
-                Add to cart
+                +
             </button>
             <button onClick={() => reduceNumber()}>
-                remove from cart
+                -
+            </button>
+            <button onClick={() => removeProduct()}>
+                Remove
             </button>
             <button onClick={() => switchFavorites()}>
-               {favorites.some((item) => item === productData.id) ? 'Remove from favorites' : 'Add to favorites'}
+                {favorites.some((item) => item === productData.id) ? 'Remove from favorites' : 'Add to favorites'}
             </button>
         </div>
     )

@@ -1,4 +1,6 @@
+import { ProductCard } from "../components/ProductCard";
 import SimpleSlider from "../components/SimpleSlider"
+import { popularProducts, productsData } from "../data"
 
 export const Home = () => {
   return (
@@ -18,16 +20,13 @@ export const Home = () => {
             margin: "0 auto"
           }}>
 
-            {Array.from({ length: 6 }).map((_, index) => {
-              return <div css={{ padding: "20px" }} key={index}>
-                <div className='product' css={{}}>
-                  <h2>Product</h2>
-                  <img src="https://via.placeholder.com/150" alt="" />
-                  <p>Content</p>
-                </div>
-
-              </div>
+            {popularProducts.map((id) => {
+              const productData = productsData.find((product) => product.id === id);
+              return (
+                productData && <ProductCard key={id} productData={productData} />
+              )
             })}
+
           </div>
         </section>
       </div>
